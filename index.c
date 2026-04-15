@@ -179,7 +179,8 @@ static int compare_index_entries(const void *a, const void *b) {
 }
 
 int index_save(const Index *index) {
-    Index sorted = *index;
+    static Index sorted;
+    sorted = *index;
     qsort(sorted.entries, sorted.count, sizeof(IndexEntry), compare_index_entries);
 
     char tmp_path[] = ".pes/index.tmp";
