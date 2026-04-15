@@ -137,7 +137,7 @@ int object_write(ObjectType type, const void *data, size_t len, ObjectID *id_out
     char path[512];
     object_path(id_out, path, sizeof(path));
 
-    char tmp_path[512];
+    char tmp_path[1024];
     snprintf(tmp_path, sizeof(tmp_path), "%s/tmp_write", shard_dir);
 
     int fd = open(tmp_path, O_CREAT | O_WRONLY | O_TRUNC, 0644);
